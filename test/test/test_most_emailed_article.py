@@ -20,9 +20,6 @@ class TestMostEmailedArticle(unittest.TestCase):
         pass
 
     def test_period_can_be_only_1_7_30_days(self):
-        """
-        Test EmailedArticle
-        """
         periods = [1, 7, 30]
         for period in periods:
             with self.subTest():
@@ -33,7 +30,7 @@ class TestMostEmailedArticle(unittest.TestCase):
         for period in periods:
             with self.subTest():
                 try:
-                    self.api.emailed_period_json_get(period=8)
+                    self.api.emailed_period_json_get(period=period)
                 except ApiException as e:
                     self.assertEqual(e.status, 404)
 
