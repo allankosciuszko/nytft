@@ -8,10 +8,10 @@ import swagger_client
 from swagger_client.rest import ApiException
 
 
-class TestEmailedArticle(unittest.TestCase):
+class TestMostEmailedArticle(unittest.TestCase):
 
     def setUp(self):
-        self.api = swagger_client.apis.most_popular_api.MostPopularApi()
+        self.api = swagger_client.apis.most_popular_api.MostPopularApi
 
     def tearDown(self):
         pass
