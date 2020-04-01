@@ -11,7 +11,10 @@ from swagger_client.rest import ApiException
 class TestMostEmailedArticle(unittest.TestCase):
 
     def setUp(self):
-        self.api = swagger_client.apis.most_popular_api.MostPopularApi
+        apiKey = os.getenv('NYFT_API_KEY')
+        self.assertNotIn(apiKey, [None, ""])
+        swagger_client.configuration.api_key = {"api-key": apiKey}
+        self.api = swagger_client.apis.most_popular_api.MostPopularApi()
 
     def tearDown(self):
         pass
@@ -34,7 +37,7 @@ class TestMostEmailedArticle(unittest.TestCase):
                 except ApiException as e:
                     self.assertEqual(e.status, 404)
 
-    def test_response_has_articles(self):
+    def test_response_has_20_articles(self):
         response = self.api.emailed_period_json_get(period=1)
         self.assertEqual(len(response.results), 20)
 
