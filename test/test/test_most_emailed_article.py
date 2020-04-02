@@ -24,7 +24,6 @@ class TestMostEmailedArticle(unittest.TestCase):
             swagger_client.configuration.api_key = {"api-key": ""}
             response = self.api.emailed_period_json_get(period=1)
         except ApiException as e:
-            print(e.status)
             self.assertEqual(e.status, 401)
 
 

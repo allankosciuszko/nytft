@@ -24,7 +24,6 @@ class TestMostSharedArticle(unittest.TestCase):
             swagger_client.configuration.api_key = {"api-key": ""}
             response = self.api.viewed_period_json_get(period=1)
         except ApiException as e:
-            print(e.status)
             self.assertEqual(e.status, 401)
 
     def test_period_can_be_only_1_7_30_days(self):
@@ -53,7 +52,6 @@ class TestMostSharedArticle(unittest.TestCase):
             self.api.viewed_period_json_get(period=7, share_type="twitter")
         except  ApiException as e:
             self.assertEqual(e.status, 404)
-
 
 if __name__ == '__main__':
     unittest.main()
