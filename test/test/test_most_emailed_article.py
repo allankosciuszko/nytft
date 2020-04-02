@@ -19,6 +19,15 @@ class TestMostEmailedArticle(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_can_access_only_with_valid_api_key(self):
+        try:
+            swagger_client.configuration.api_key = {"api-key": ""}
+            response = self.api.emailed_period_json_get(period=1)
+        except ApiException as e:
+            print(e.status)
+            self.assertEqual(e.status, 401)
+
+
     def test_period_can_be_only_1_7_30_days(self):
         periods = [1, 7, 30]
         for period in periods:
